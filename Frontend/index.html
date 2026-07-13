@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snippedle — guess the language</title>
+<meta name="description" content="A daily puzzle: guess the programming language from a code snippet in 6 tries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-bracket">&lt;</span>Snippedle<span class="logo-bracket">/&gt;</span>
+    </div>
+    <button id="stats-btn" class="icon-btn" aria-label="View stats" title="Stats">📊</button>
+  </header>
+
+  <p class="tagline">Guess the language from the snippet. Six tries. One puzzle a day.</p>
+
+  <section class="editor-window" aria-label="Mystery code snippet">
+    <div class="editor-titlebar">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span id="filename" class="editor-tab">mystery.???</span>
+    </div>
+    <pre id="code-block" class="editor-body" aria-live="polite"></pre>
+  </section>
+
+  <form id="guess-form" class="guess-form" autocomplete="off">
+    <span class="prompt-arrow">&gt;</span>
+    <input
+      id="guess-input"
+      type="text"
+      list="language-options"
+      placeholder="type a language…"
+      aria-label="Guess the language"
+      required
+    >
+    <datalist id="language-options"></datalist>
+    <button type="submit">Guess</button>
+  </form>
+  <p id="remaining-count" class="remaining"></p>
+
+  <ul id="guess-history" class="guess-history" aria-label="Your guesses"></ul>
+
+  <section id="result-panel" class="result-panel hidden">
+    <h2 id="result-title"></h2>
+    <p id="result-sub"></p>
+    <button id="share-btn" class="share-btn">Share result</button>
+  </section>
+
+  <footer class="site-footer">
+    <p>New snippet every day. Come back tomorrow.</p>
+  </footer>
+
+</div>
+
+<div id="stats-panel" class="stats-panel hidden" role="dialog" aria-label="Your stats">
+  <div class="stats-card">
+    <button id="stats-close" class="icon-btn stats-close" aria-label="Close stats">✕</button>
+    <h2>Your stats</h2>
+    <div class="stats-grid">
+      <div><span id="stat-played">0</span><label>Played</label></div>
+      <div><span id="stat-winpct">0%</span><label>Win %</label></div>
+      <div><span id="stat-streak">0</span><label>Streak</label></div>
+      <div><span id="stat-maxstreak">0</span><label>Max streak</label></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/snippets.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/game.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
